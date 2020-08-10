@@ -18,7 +18,7 @@ steps:
   image: plugins/docker
   settings:
     repo: 10.10.200.105:5500/drone-test
-    dockerfile: docker/Dockfile
+    dockerfile: docker/Dockerfile
     tags:
     - latest
     - v0.0.0
