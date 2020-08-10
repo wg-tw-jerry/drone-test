@@ -6,10 +6,18 @@ steps:
 - name: test drone env
   image: golang:1.12-alpine
   commands:
-  - echo "DRONE_BRANCH = ${DRONE_BRANCH}"
-  - echo "DRONE_BUILD_NUMBER = ${DRONE_BUILD_NUMBER}"
-  - echo "DRONE_COMMIT = ${DRONE_COMMIT}"
-  - echo "DRONE_COMMIT_BRANCH = ${DRONE_COMMIT_BRANCH}"
-  - echo "DRONE_REPO = ${DRONE_REPO}"
-  - echo "DRONE_TAG = ${DRONE_TAG}"
-  - echo "DRONE_TARGET_BRANCH = ${DRONE_TARGET_BRANCH}"
+  - >
+    echo "DRONE_BRANCH = ${DRONE_BRANCH}";
+    echo "DRONE_BUILD_NUMBER = ${DRONE_BUILD_NUMBER}";
+    echo "DRONE_COMMIT = ${DRONE_COMMIT}";
+    echo "DRONE_COMMIT_BRANCH = ${DRONE_COMMIT_BRANCH}";
+    echo "DRONE_REPO = ${DRONE_REPO}";
+    echo "DRONE_TAG = ${DRONE_TAG}";
+    echo "DRONE_TARGET_BRANCH = ${DRONE_TARGET_BRANCH}";
+- name: test build image
+  image: plugins/docker
+  settings:
+    repo: 10.10.200.105:5500/drone-test
+    tags:
+    - latest
+    - v0.0.0
